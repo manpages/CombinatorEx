@@ -1,1 +1,1 @@
-ERL_LIBS=deps:apps elixir apps/combinatorex/test/unit.exs
+ERL_LIBS=. elixir test/unit.exs

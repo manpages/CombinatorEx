@@ -1,4 +1,3 @@
-CombinatorEx
-============
+# Combinatorex
 
-Elixir combinatorics library
+** TODO: Add description **

@@ -27,9 +27,9 @@ defmodule CombinatorEx.Test.Numbers do
           cnb = CC.c(n, b)
           cmb = CC.c(n-b,k-b)
           ckb = CC.c(k, b)
-          res = cnb * cmb / ckb
+          res = div (cnb * cmb), ckb
           IO.puts "(n,k) #{cnk} = #{res} (#{cnb} * #{cmb} / #{ckb})"
-          assert cnk/1 == res
+          assert cnk == res
           #CC.c(n,k) == CC.c(n, b) * CC.c(n-b,k-b) / CC.c(k, b)
         end
       end
