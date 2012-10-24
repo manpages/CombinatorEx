@@ -13,26 +13,37 @@ defmodule CombinatorEx.Test.Numbers do
     assert CC.c(5,3) == 10
   end
 
+  test "some extremal cases" do
+    assert CC.c(3,5) == 0 # should we raise an error here?
+    assert CC.c(0,3) == 0 # should it be 1?
+  end
+
   test "binomial coefficients properties" do
+    IO.puts "Tests of some important properties"
     ns = :lists.seq(97, 100, 1)
     ks = :lists.seq(58, 60, 1)
     Enum.all? ns, fn(n) ->
       Enum.all? ks, fn(k) ->
-        IO.puts "Testing C(#{n},#{k}):"
-        IO.puts "Testing k ←→ n-k case:"
         assert CC.c(n, k) == CC.c(n, n-k)
         Enum.all? :lists.seq(k-3, k-1), fn(b) -> 
-          IO.puts "Testing #{b}-splicing"
-          cnk = CC.c(n, k)
-          cnb = CC.c(n, b)
-          cmb = CC.c(n-b,k-b)
-          ckb = CC.c(k, b)
-          res = div (cnb * cmb), ckb
-          IO.puts "(n,k) #{cnk} = #{res} (#{cnb} * #{cmb} / #{ckb})"
-          assert cnk == res
-          #CC.c(n,k) == CC.c(n, b) * CC.c(n-b,k-b) / CC.c(k, b)
+          CC.c(n,k) == div(CC.c(n, b) * CC.c(n-b,k-b), CC.c(k, b))
         end
       end
     end
+  end
+end
+
+defmodule CombinatorEx.Test.Lists do
+  use ExUnit.Case
+  alias CombinatorEx.Comb, as: CC
+
+  test "basic combination lists" do
+    IO.puts "Basic combination lists"
+    assert :erlang.length(CC.c(3, [:a,:b,:c,:d,:e])) == 10
+    #todo: write full test to match lists.
+  end
+
+  test "some extremal cases" do
+    assert :erlang.length(CC.c(5, [:a,:b,:c])) == 0 # maybe raise error?
   end
 end

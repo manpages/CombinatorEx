@@ -1,19 +1,18 @@
 defmodule CombinatorEx.Comb do
   def c(n, k) when is_integer(n) and is_integer(k) do 
+    CombinatorEx.Comb.Numbers.c(n, k)
+  end
+
+  def c(k, l) when is_integer(k) and is_list(l) do
     cond do
-      ((n >= 0) && (k >= 0) && (n >= k)) -> 
-        c(n, k, 1, 1)
+      ((k >= 0) && (length(l) >= 0) && (length(l) >= k)) ->
+        CombinatorEx.Comb.Lists.c(k, l)
       true ->
-        0
+        []
     end
   end
 
-  def c(n, k, k, acc0) do 
-    div (acc0 * (n-k+1)), k
+  def c(l) when is_list(l) do
+    CombinatorEx.Comb.Lists.c(l)
   end
-  
-  def c(n, k, i, acc0) do 
-    c(n, k, i+1, (div acc0 * (n-i+1), i))
-  end
-
 end
