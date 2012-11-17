@@ -1,5 +1,3 @@
-ExUnit.start
-
 defmodule CombinatorEx.Test.Numbers do
   use ExUnit.Case
   alias CombinatorEx.Comb, as: CC

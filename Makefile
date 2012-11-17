@@ -5,7 +5,8 @@ combinatorex_src := $(wildcard lib/*.ex) \
 
 .PHONY: clean test
 
-test: ebin
+test:
+	@mix test
 
 ebin: $(combinatorex_src)
 	@rm -rf "ebin/"
