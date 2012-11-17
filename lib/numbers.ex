@@ -1,10 +1,9 @@
 defmodule CombinatorEx.Comb.Numbers do
   def c(n, k) when is_integer(n) and is_integer(k) do 
-    cond do
-      ((n >= 0) && (k >= 0) && (n >= k)) -> 
-        c(n, k, 1, 1)
-      true ->
-        0
+    if ((n > 0) && (k > 0) && (n >= k)) do
+      c(n, k, 1, 1)
+    else
+      0
     end
   end
 

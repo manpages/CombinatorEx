@@ -3,6 +3,7 @@ defmodule CombinatorEx.Test.Numbers do
   alias CombinatorEx.Comb, as: CC
 
   test "basic binomial coefficients" do
+    IO.puts ""
     IO.puts "Basic binomial coefficient tests"
     assert CC.c(1,3) == 0
     assert CC.c(2,3) == 0
@@ -12,11 +13,14 @@ defmodule CombinatorEx.Test.Numbers do
   end
 
   test "some extremal cases" do
+    IO.puts ""
     assert CC.c(3,5) == 0 # should we raise an error here?
     assert CC.c(0,3) == 0 # should it be 1?
+    assert CC.c(1,0) == 0 # maybe raise error?
   end
 
   test "binomial coefficients properties" do
+    IO.puts ""
     IO.puts "Tests of some important properties"
     ns = :lists.seq(97, 100, 1)
     ks = :lists.seq(58, 60, 1)
@@ -36,12 +40,14 @@ defmodule CombinatorEx.Test.Lists do
   alias CombinatorEx.Comb, as: CC
 
   test "basic combination lists" do
+    IO.puts ""
     IO.puts "Basic combination lists"
     assert :erlang.length(CC.c(3, [:a,:b,:c,:d,:e])) == 10
     #todo: write full test to match lists.
   end
 
   test "some extremal cases" do
+    IO.puts ""
     assert :erlang.length(CC.c(5, [:a,:b,:c])) == 0 # maybe raise error?
   end
 end
