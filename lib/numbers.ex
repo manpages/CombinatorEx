@@ -3,7 +3,11 @@ defmodule CombinatorEx.Comb.Numbers do
     if ((n > 0) && (k > 0) && (n >= k)) do
       c(n, k, 1, 1)
     else
-      0
+      if (k == 0) do
+        1
+      else
+        0
+      end
     end
   end
 

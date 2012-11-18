@@ -4,11 +4,14 @@ defmodule CombinatorEx.Comb do
   end
 
   def c(k, l) when is_integer(k) and is_list(l) do
-    cond do
-      ((k >= 0) && (length(l) >= 0) && (length(l) >= k)) ->
+      if ((k > 0) && (length(l) > 0) && (length(l) >= k)) do
         CombinatorEx.Comb.Lists.c(k, l)
-      true ->
-        []
+      else
+        if (k == 0) do
+          [[]]
+        else
+          []
+        end
     end
   end
 

@@ -15,9 +15,9 @@ defmodule CombinatorEx.Test.Numbers do
   test "some extremal cases" do
     IO.puts ""
     assert CC.c(3,5) == 0 # should we raise an error here?
-    assert CC.c(0,3) == 0 # should it be 1?
-    assert CC.c(1,0) == 0 # maybe raise error?
-    assert CC.c(0,0) == 0 # maybe raise error?
+    assert CC.c(0,3) == 0 # maybe raise error?
+    assert CC.c(9,0) == 1
+    assert CC.c(0,0) == 1 # there is one way to select nothing from empty set
   end
 
   test "binomial coefficients properties" do
