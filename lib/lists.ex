@@ -21,7 +21,6 @@ defmodule CombinatorEx.Comb.Lists do
     [Enum.map(l, f)]
   end
   defp _cmap(k, [h|t], f) do 
-    IO.puts("body")
     (lc subc inlist _cmap(k-1, t, f), do: [f.(h)|subc]) ++ _cmap(k, t, f)
   end
 end

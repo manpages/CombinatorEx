@@ -51,4 +51,12 @@ defmodule CombinatorEx.Test.Lists do
     IO.puts ""
     assert :erlang.length(CC.c(5, [:a,:b,:c])) == 0 # maybe raise error?
   end
+
+  test "cmap tests" do
+    IO.puts ""
+    assert (
+      CombinatorEx.Comb.Lists.cmap(2, [1,2,3,4,5], fn(x) -> x*x end) == 
+      [[1,4],[1,9],[1,16],[1,25],[4,9],[4,16],[4,25],[9,16],[9,25],[16,25]]
+    )
+  end
 end
